@@ -14,21 +14,21 @@
 # An example set of tests is shown below. It is important to note that these tests are not "unit tests" in 
 # that they are not ran in isolation but in the order shown and the state of the device is not reset or 
 # altered in between executions (unless preconditions are used).
-tests = [ {'description': 'Over 140kg: PINA: 50, PINB: 50, PINC: 50 => PORTD: 0x95',
+tests = [ {'description': 'Over 140kg: PINA: 50, PINB: 50, PINC: 50 => PORTD: 0x25',
     'steps': [ {'inputs': [('PINA',50), ('PINB', 50), ('PINC', 50)], 'iterations': 5 } ],
-    'expected': [('PORTD',0x95)],
+    'expected': [('PORTD',0x25)],
     },
-    {'description': 'Exceed 80kg Diff: PINA: 5, PINB: 25, PINC: 90 => PORTD: 0x7A',
+    {'description': 'Exceed 80kg Diff: PINA: 5, PINB: 25, PINC: 90 => PORTD: 0x1E',
     'steps': [ {'inputs': [('PINA',5), ('PINB', 25), ('PINC', 90)], 'iterations': 5 } ],
-    'expected': [('PORTD',0x7A)],
+    'expected': [('PORTD',0x1E)],
     },
-    {'description': 'Both: PINA: 5, PINB: 55, PINC: 90 => PORTD: 0x97',
+    {'description': 'Both: PINA: 5, PINB: 55, PINC: 90 => PORTD: 0x27',
     'steps': [ {'inputs': [('PINA',5), ('PINB',55), ('PINC',90)], 'iterations': 5 } ],
-    'expected': [('PORTD',0x97)],
+    'expected': [('PORTD',0x27)],
     },
-	{'description': 'Neither: PINA: 45, PINB: 30, PINC: 45 => PORTD: 0x78',
+	{'description': 'Neither: PINA: 45, PINB: 30, PINC: 45 => PORTD: 0x1C',
     'steps': [ {'inputs': [('PINA',45), ('PINB',30), ('PINC',45)], 'iterations': 5 } ],
-    'expected': [('PORTD',0x78)],
+    'expected': [('PORTD',0x1C)],
     },
     ]
 

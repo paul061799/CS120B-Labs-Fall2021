@@ -39,7 +39,7 @@ int main(void) {
 			acDiff = tmpA - tmpC;
 		}
 
-		final = totWeight & 0xFC;
+		final = (totWeight >> 2) & 0xFC;
 
 		if(totWeight > 140){
 			final = final | 0x01;
