@@ -14,22 +14,52 @@
 
 int main(void) {
     /* Insert DDR and PORT initializations */
-   	DDRD = 0x00; PORTD = 0xFF;
-	DDRB = 0xFE; PORTB = 0x01;
-	unsigned short weight = 0x00;
-	unsigned char final = 0x00;
+   	DDRA = 0x00; PORTA = 0xFF;
+   	DDRC = 0xFF; PORTC = 0x00; 
+	unsigned char fuelLevel, lowFuel, final = 0x00;
     /* Insert your solution below */
     while (1) {
-		weight = (PIND << 1) + (PINB & 0x01);
-
-		if(weight >= 70){
-			final = 0x02;
-		} else if (weight > 5){
-			final = 0x04;
-		} else {
-			final = 0x00;
+		fuelLevel = PINA & 0x0F;
+		
+		switch(fuelLevel){
+			case 15:
+			case 14:
+			case 13:
+				final = 0x3F;
+				break;
+			case 12:
+			case 11:
+			case 10:
+				final = 0x3E;
+				break;
+			case 9:
+			case 8:
+			case 7:
+				final = 0x3C;
+				break;
+			case 6:
+			case 5:
+				final = 0x38;
+				break;
+			case 4:
+			case 3:
+				final = 0x30;
+				lowFuel = 0x01;
+				break;
+			case 2:
+			case 1:
+				final = 0x20;
+				lowFuel = 0x01;
+				break;
+			default:
+				final = 0x00;
+				lowFuel = 0x01;
+				break;
 		}
-		PORTB = final;
+
+		if(lowFuel){final = final | 0x40;}
+
+		PORTC = final;
     }
     return 1;
 }
