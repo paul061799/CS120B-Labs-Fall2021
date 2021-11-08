@@ -30,8 +30,12 @@ int main(void) {
 		read = ADC;
 		bot = (char)read;
 		top = (char)(read >> 4);
-		PORTB = bot;
-		PORTD = top;
+		if(ADC >= (0xFF/2)){
+			PORTB = bot;
+			PORTD = top;
+		} else {
+			PORTB = 0;
+			PORTD = 0;
+		}
 	}
 }
-//min: 0x0F, max: 0xFF;

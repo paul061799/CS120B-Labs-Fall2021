@@ -34,4 +34,3 @@ int main(void) {
 		PORTD = top;
 	}
 }
-//min: 0x0F, max: 0xFF;
